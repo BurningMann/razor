@@ -20,7 +20,7 @@
           </div>
           <div class="conf_element">
             <span class="conf_title">ВИДЕОКАРТА:</span>
-            <p class="conf_name">{{product.gpu}}</p>
+            <p class="conf_name">{{product.gpu.name}}</p>
           </div>
           <div class="conf_element">
             <span class="conf_title">СИСТЕМНЫЙ SSD:</span>
@@ -35,6 +35,17 @@
             <p class="conf_name">{{product.garancy}}</p>
           </div>
         </div>
+        <router-link 
+          tag="div" 
+          :to = "{
+            name: 'Product', 
+            params: {
+              product: product.url
+            }
+          }" 
+        >
+        <a href="#" class="btn">Подробнее</a>
+        </router-link>
       </div>
     </div>
     <div class="text_box">
@@ -63,38 +74,30 @@ var filter_list = null
 export default {
   data: () => ({
     products: [
-      {id:1,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: "NVIDIA GeForce GTX 1660 Super 6G", ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:1,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-m"},
 
-      {id:2,title:"PROGAMING S", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10105F 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: "NVIDIA GeForce GTX 1660 Super 6G", ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:2,title:"PROGAMING S", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10105F 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-s"},
 
-      {id:3,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: "NVIDIA GeForce GTX 1660 Super 6G", ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:3,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-m"},
 
-      {id:4,title:"PROGAMING AORUS", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 3600X 3.80 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: "AMD RADEON RX 6700XT 12G", ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:4,title:"PROGAMING AORUS", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 3600X 3.80 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"AMD",name:"AMD RADEON RX 6700XT 12G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-AORUS"},
 
-      {id:5,title:"PROGAMING X", cpu: {type:"Intel",name:"6-ядерный Intel Core i5-11600KF 3.9 GHz"}, ram: "16GB (2x8Gb) DDR4 3000Mhz", gpu: "NVIDIA GeForce RTX 3070 8GB", ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:5,title:"PROGAMING X", cpu: {type:"Intel",name:"6-ядерный Intel Core i5-11600KF 3.9 GHz"}, ram: "16GB (2x8Gb) DDR4 3000Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce RTX 3070 8GB"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-x"},
 
-      {id:6,title:"PROGAMING CORSAIR", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 5600X 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 3200Mhz", gpu: "NVIDIA GeForce RTX 3070 8GB", ssd: "SSD M.2 480GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца"},
+      {id:6,title:"PROGAMING CORSAIR", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 5600X 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 3200Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce RTX 3070 8GB"}, ssd: "SSD M.2 480GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-CORSAIR"},
 
-      {id:7,title:"PROGAMING MSI", cpu: "6-ядерный AMD Ryzen 5 3600 3.60 GHz", ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: "MSI Radeon RX 6800 XT GAMING X TRIO 16G", ssd: "M.2 NVMe 500GB", sdd: "Жесткий диск 2TB Seagate IronWolf Pro", garancy: "24 месяца"},
+      {id:7,title:"PROGAMING MSI", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 3600 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"AMD",name:"MSI Radeon RX 6800 XT GAMING X TRIO 16G"}, ssd: "M.2 NVMe 500GB", sdd: "Жесткий диск 2TB Seagate IronWolf Pro", garancy: "24 месяца",url:"progaming-MSI"},
     ],
   }),
   computed:{
     filtredProducts() {
-      filter_list = this.$store.state.filterList.cpu
-      console.log(filter_list)
-      if(filter_list.length <= 0) {
-        return this.products
-      }
-      return this.products.filter(isPrime);
+      filter_list = this.$store.state.filterList
+      return this.products.filter((item) => {
+          return  (filter_list.cpu.length === 0 || filter_list.cpu.includes(item.cpu.type)) &&
+                  (filter_list.gpu.length === 0 || filter_list.gpu.includes(item.gpu.type))
+      })
     }       
   },
-}
-function isPrime(product) {
-  for (let i = 0; i < filter_list.length; i++){
-    if(product.cpu.type == filter_list[i]){
-      return true
-    }
-  }
 }
 </script>
 
@@ -130,6 +133,18 @@ function isPrime(product) {
           font-size: 14px;
           margin: 7px 0;
         }
+      }
+      .btn{
+        widows: 90%;
+        margin: 20px auto 0;
+        background: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        text-transform: uppercase;
+        color: #fff;
+        cursor: pointer;
       }
     }
   }

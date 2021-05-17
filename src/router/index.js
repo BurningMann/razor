@@ -8,14 +8,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    meta: { layout: 'Main' },
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/category',
     name: 'Category',
-    meta: { layout: 'category' },
+    meta: { layout: 'Category' },
     component: () => import('../views/Category.vue')
-  }
+  },
+  {
+    path: '/category/:product',
+    name: 'Product',
+    meta: { layout: 'Main'},
+    component: () => import('../views/Cart.vue')
+  },
+  {
+    path: '*',
+    name: 'ErrorPage',
+    meta: { layout: 'Main'},
+    component: () => import('../views/ErrorPage.vue')
+  },
 ]
 
 const router = new VueRouter({

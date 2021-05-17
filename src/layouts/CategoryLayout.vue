@@ -24,10 +24,7 @@ export default {
     Header,ProductFilter
   },
   methods: {
-/*   sort(list) {
-   console.log(this.products)
-  } */
-}
+  }
 }
 </script>
 

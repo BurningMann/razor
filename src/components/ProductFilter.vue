@@ -25,7 +25,7 @@ export default {
   methods: {
     filter: function (){
       this.$store.state.filterList.cpu = this.cpuType
-      this.$store.state.filterList.gpu = this.cpuType
+      this.$store.state.filterList.gpu = this.gpuType
     }
   }
 }
