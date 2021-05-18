@@ -35,8 +35,11 @@
             <p class="conf_name">{{product.garancy}}</p>
           </div>
         </div>
-        <router-link 
+        <div class="btn" @click="openCart(product.id, product.url)">Подробнее</div>
+<!--         <router-link 
           tag="div" 
+          class="cart_button"
+          click="openCart(product.id)"
           :to = "{
             name: 'Product', 
             params: {
@@ -45,7 +48,7 @@
           }" 
         >
         <a href="#" class="btn">Подробнее</a>
-        </router-link>
+        </router-link> -->
       </div>
     </div>
     <div class="text_box">
@@ -70,34 +73,36 @@
 </template>
 
 <script>
-var filter_list = null
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   data: () => ({
-    products: [
-      {id:1,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-m"},
-
-      {id:2,title:"PROGAMING S", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10105F 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-s"},
-
-      {id:3,title:"PROGAMING M", cpu: {type:"Intel",name:"4-ядерный Intel Core i3-10100F 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce GTX 1660 Super 6G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-m"},
-
-      {id:4,title:"PROGAMING AORUS", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 3600X 3.80 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"AMD",name:"AMD RADEON RX 6700XT 12G"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-AORUS"},
-
-      {id:5,title:"PROGAMING X", cpu: {type:"Intel",name:"6-ядерный Intel Core i5-11600KF 3.9 GHz"}, ram: "16GB (2x8Gb) DDR4 3000Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce RTX 3070 8GB"}, ssd: "SSD M.2 240GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-x"},
-
-      {id:6,title:"PROGAMING CORSAIR", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 5600X 3.70 GHz"}, ram: "16GB (2x8Gb) DDR4 3200Mhz", gpu: {type:"NVIDIA",name:"NVIDIA GeForce RTX 3070 8GB"}, ssd: "SSD M.2 480GB", sdd: "Жесткий диск 1TB", garancy: "24 месяца",url:"progaming-CORSAIR"},
-
-      {id:7,title:"PROGAMING MSI", cpu: {type:"AMD",name:"6-ядерный AMD Ryzen 5 3600 3.60 GHz"}, ram: "16GB (2x8Gb) DDR4 2666Mhz", gpu: {type:"AMD",name:"MSI Radeon RX 6800 XT GAMING X TRIO 16G"}, ssd: "M.2 NVMe 500GB", sdd: "Жесткий диск 2TB Seagate IronWolf Pro", garancy: "24 месяца",url:"progaming-MSI"},
-    ],
+    filter_list: null
   }),
   computed:{
+    ...mapGetters([
+      "PRODUCTS"
+    ]),
     filtredProducts() {
-      filter_list = this.$store.state.filterList
-      return this.products.filter((item) => {
-          return  (filter_list.cpu.length === 0 || filter_list.cpu.includes(item.cpu.type)) &&
-                  (filter_list.gpu.length === 0 || filter_list.gpu.includes(item.gpu.type))
+      this.filter_list = this.$store.state.filterList
+      return this.PRODUCTS.filter((item) => {
+          return  (this.filter_list.cpu.length === 0 || this.filter_list.cpu.includes(item.cpu.type)) &&
+                  (this.filter_list.gpu.length === 0 || this.filter_list.gpu.includes(item.gpu.type))
       })
     }       
   },
+  methods:{
+    ...mapActions([
+      "GET_PRODUCTS_FROM_BD"
+    ]),
+    openCart(ID, productUrl){
+      /* this.$router.push({path: `/catalog/${productUrl}`, name: "Product"}) */
+     this.$router.push({ path: `/category/${productUrl}/`, query: { id: ID }, })
+    }
+  },
+  mounted() {
+    this.GET_PRODUCTS_FROM_BD()
+  }
 }
 </script>
 

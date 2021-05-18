@@ -1,0 +1,103 @@
+{
+  "products":[
+      {
+      "id":1,
+      "title":"PROGAMING M", 
+      "cpu": {"type":"Intel",
+              "name":"4-ядерный Intel Core i3-10100F 3.60 GHz"
+              }, 
+      "ram": "16GB (2x8Gb) DDR4 2666Mhz", 
+      "gpu": {"type":"NVIDIA",
+              "name":"NVIDIA GeForce GTX 1660 Super 6G"}, 
+      "ssd": "SSD M.2 240GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-m"
+      },
+
+      {
+      "id":2,
+      "title":"PROGAMING S", 
+      "cpu": {"type":"Intel",
+              "name":"4-ядерный Intel Core i3-10105F 3.70 GHz"}, 
+      "ram": "16GB (2x8Gb) DDR4 2666Mhz", 
+      "gpu": {"type":"NVIDIA",
+              "name":"NVIDIA GeForce GTX 1660 Super 6G"}, 
+      "ssd": "SSD M.2 240GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-s"
+      },
+
+      {
+      "id":3,
+      "title":"PROGAMING M", 
+      "cpu": {"type":"Intel",
+              "name":"4-ядерный Intel Core i3-10100F 3.60 GHz"}, 
+      "ram": "16GB (2x8Gb) DDR4 2666Mhz", 
+      "gpu": {"type":"NVIDIA",
+              "name":"NVIDIA GeForce GTX 1660 Super 6G"}, 
+      "ssd": "SSD M.2 240GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-m"
+      },
+  
+      {
+      "id":4,
+      "title":"PROGAMING AORUS", 
+      "cpu": {"type":"AMD",
+              "name":"6-ядерный AMD Ryzen 5 3600X 3.80 GHz"}, 
+      "ram": "16GB (2x8Gb) DDR4 2666Mhz", 
+      "gpu": {"type":"AMD",
+              "name":"AMD RADEON RX 6700XT 12G"}, 
+      "ssd": "SSD M.2 240GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-AORUS"
+      },
+  
+      {
+      "id":5,
+      "title":"PROGAMING X", 
+      "cpu": {"type":"Intel",
+              "name":"6-ядерный Intel Core i5-11600KF 3.9 GHz"}, 
+      "ram": "16GB (2x8Gb) DDR4 3000Mhz", 
+      "gpu": {"type":"NVIDIA",
+              "name":"NVIDIA GeForce RTX 3070 8GB"}, 
+      "ssd": "SSD M.2 240GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-x"
+      },
+  
+      {  
+      "id":6,
+      "title":"PROGAMING CORSAIR", 
+      "cpu": {"type":"AMD",
+              "name":"6-ядерный AMD Ryzen 5 5600X 3.70 GHz"
+              }, 
+      "ram": "16GB (2x8Gb) DDR4 3200Mhz", 
+      "gpu": {"type":"NVIDIA",
+              "name":"NVIDIA GeForce RTX 3070 8GB"}, 
+      "ssd": "SSD M.2 480GB", 
+      "sdd": "Жесткий диск 1TB", 
+      "garancy": "24 месяца",
+      "url":"progaming-CORSAIR"
+      },
+  
+      {
+      "id":7,
+      "title":"PROGAMING MSI", 
+      "cpu": {"type":"AMD",
+              "name":"6-ядерный AMD Ryzen 5 3600 3.60 GHz"}, 
+      "ram": "16GB (2x8Gb) DDR4 2666Mhz", 
+      "gpu": {"type":"AMD",
+              "name":"MSI Radeon RX 6800 XT GAMING X TRIO 16G"}, 
+      "ssd": "M.2 NVMe 500GB", 
+      "sdd": "Жесткий диск 2TB Seagate IronWolf Pro", 
+      "garancy": "24 месяца",
+      "url":"progaming-MSI"
+      }
+  ]
+}
