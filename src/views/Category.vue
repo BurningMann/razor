@@ -35,20 +35,7 @@
             <p class="conf_name">{{product.garancy}}</p>
           </div>
         </div>
-        <div class="btn" @click="openCart(product.id, product.url)">Подробнее</div>
-<!--         <router-link 
-          tag="div" 
-          class="cart_button"
-          click="openCart(product.id)"
-          :to = "{
-            name: 'Product', 
-            params: {
-              product: product.url
-            }
-          }" 
-        >
-        <a href="#" class="btn">Подробнее</a>
-        </router-link> -->
+        <div class="btn" @click="openCard(product.id, product.url)">Подробнее</div>
       </div>
     </div>
     <div class="text_box">
@@ -95,9 +82,8 @@ export default {
     ...mapActions([
       "GET_PRODUCTS_FROM_BD"
     ]),
-    openCart(ID, productUrl){
-      /* this.$router.push({path: `/catalog/${productUrl}`, name: "Product"}) */
-     this.$router.push({ path: `/category/${productUrl}/`, query: { id: ID }, })
+    openCard(ID, productUrl){
+      this.$router.push({ path: `/category/${productUrl}/`, query: { productId: ID }, })
     }
   },
   mounted() {

@@ -11,7 +11,8 @@ export default new Vuex.Store({
       gpu: [],
     },
     products: [],
-    currentProductID: null
+    currentProductID: null,
+    productsInCart: [],
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {

@@ -1,5 +1,14 @@
 <template>
   <header>
+     <router-link 
+        tag="div"
+        to="/cart"
+      >
+        <div class="cart" >
+          <img src="@/assets/shoping.svg" alt="">
+          <span v-if="getProductsInCart > 0" class="cart__count">{{getProductsInCart}}</span>
+        </div>
+      </router-link>
     <div class="burger" @click="menu_open = !menu_open"></div>
     <div class="dorpdown_menu" :class="{open: menu_open}">
       <ul class="menu_list">
@@ -19,17 +28,28 @@
 
 <script>
 export default {
+  mame: "Header",
   data: () => ({
     links: [
       { title: 'Главная', url: '/', exact: true },
       { title: 'Каталог', url: '/category' },
-      { title: '3', url: '/q' },
+      { title: 'Корзина', url: '/cart' },
       { title: '4', url: '/w' },
       { title: '5', url: '/e' }
     ],
-    menu_open: false
-  })
-
+    menu_open: false,
+    productsInCart: 0
+  }),
+  methods:{
+    openCart(){
+      this.$router.push({ path: '/card'})
+    }
+  },
+  computed:{
+    getProductsInCart(){
+      return this.$store.state.productsInCart.length
+    }
+  }
 }
 </script>
 
@@ -76,6 +96,24 @@ export default {
         color: #fff;
         text-decoration: none;
       }
+    }
+  }
+  .cart{
+    width: 40px;
+    margin-right: 50px;
+    cursor: pointer;
+    &__count{
+      width: 17px;
+      height: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      background: crimson;
+      border-radius: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
     }
   }
 </style>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -19,15 +18,21 @@ const routes = [
   },
   {
     path: '/category/*/',
-    name: 'Product',
+    name: 'ProductCard',
     meta: { layout: 'Main'},
-    component: () => import('../views/Cart.vue')
+    component: () => import('../views/ProductCard.vue')
   },
   {
     path: '*',
     name: 'ErrorPage',
     meta: { layout: 'Main'},
     component: () => import('../views/ErrorPage.vue')
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    meta: { layout: 'Main'},
+    component: () => import('../views/Cart.vue')
   },
 ]
 
