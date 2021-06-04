@@ -1,17 +1,17 @@
 <template>
   <div class="cart_wrapper">
-      <!-- <CartItem /> -->
+      <CartItems />
   </div>
 </template>
 
 <script>
-import CartItem from "@/components/CartItem"
+import CartItems from "@/components/CartItems"
 
 export default {
   name: 'Cart',
 
   components: {
-    CartItem
+    CartItems
   },
 
   data: () => ({
